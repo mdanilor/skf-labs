@@ -22,3 +22,4 @@ class Users:
         if len(rows) > 0:
             return rows[0][0]
         return None
+
