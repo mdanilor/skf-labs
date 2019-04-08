@@ -5,7 +5,7 @@ pip3 install -r requirements.txt
 ```
 
 ```
-python3 CMD.py
+python3 Session-fixation.py
 ```
 
 Visit the SKF Labs:
