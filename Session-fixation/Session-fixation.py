@@ -12,9 +12,21 @@ def start():
     url = "/home/%s"%(secrets.token_urlsafe(32),)
     return redirect(url, code=302)
 
-@app.route('/home/<sessid>')
+@app.route('/home/<sessid>', methods=['GET', 'POST'])
 def home(sessid):
-    return render_template("login.html")
+    wrong = ""
+    usersObj = sfmodel.Users()
+    if request.method == 'POST':
+        login = request.form["username"]
+        password = request.form["password"]
+        usersObj.authenticateUser(login, password, sessid)
+        wrong = "Invalid username or password."
+
+    user = usersObj.getUserFromSessionToken(sessid)
+    if user is None:
+        return render_template("login.html", msg=wrong)
+    else:
+        return render_template("welcome.html", name=user)
     
 
 @app.route("/login", methods=['POST'])

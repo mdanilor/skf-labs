@@ -5,7 +5,7 @@ import hashlib
 class Users:
     def authenticateUser(self, userName, password, sessionToken):
         db = database_con()
-        hashedPw = hashlib.sha1(password).hexdigest()
+        hashedPw = hashlib.sha1(password.encode('utf-8')).hexdigest()
         sql = ''' UPDATE users SET SessionToken=? WHERE UserName=? AND Password=?; '''
         params = (sessionToken, userName, hashedPw)
         cur = db.cursor()

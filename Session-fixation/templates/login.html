@@ -63,11 +63,12 @@
 					<div class="panel-heading">Session fixation</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form method="post" action="/login">
+							<form method="post" action="">
 								<input type="text" name="username" class="form-control" placeholder="Username"> <br />
 								<input type="password" name="password" class="form-control" placeholder="Password"> <br />
 								<input type="submit" class="btn btn-primary" value="Submit">
 							</form>
+                            <p> {{ msg }}</p>
 						</div>
 					</div>
 				</div>
